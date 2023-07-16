@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>127238456451-6lh8kjrg45l8s1rec7l8pjuvg62qhffj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.127238456451-6lh8kjrg45l8s1rec7l8pjuvg62qhffj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD_-3Mq0KQsm8Z9IHeiJiKEfbWGzvC5Gfc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>127238456451</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.smartcanteen</string>
+	<key>PROJECT_ID</key>
+	<string>smartcanteen-6e107</string>
+	<key>STORAGE_BUCKET</key>
+	<string>smartcanteen-6e107.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:127238456451:ios:7155110d9c4aa308fd87b6</string>
+</dict>
+</plist>
