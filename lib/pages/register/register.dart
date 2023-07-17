@@ -71,16 +71,20 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Column(
                 children: [
-                  MyButton(
-                      onPressed: () {
-                        registerAuthProvider.registerValidation(
-                          username: username,
-                          context: context,
-                          email: email,
-                          password: password,
-                        );
-                      },
-                      text: "Register"),
+                  registerAuthProvider.loading == false
+                      ? MyButton(
+                          onPressed: () {
+                            registerAuthProvider.registerValidation(
+                              username: username,
+                              context: context,
+                              email: email,
+                              password: password,
+                            );
+                          },
+                          text: "Register")
+                      : const Center(
+                          child: CircularProgressIndicator(),
+                        ),
                   const SizedBox(
                     height: 20,
                   ),

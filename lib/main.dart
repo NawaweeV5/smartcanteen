@@ -1,11 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smartcanteen/pages/register/components/register_auth_provider.dart';
 import 'package:smartcanteen/pages/register/register.dart';
-import 'package:smartcanteen/pages/welcome/welcome_page.dart';
 
-void main() {
-  runApp(const MainApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
