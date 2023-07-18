@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:smartcanteen/pages/home/home_page.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +24,12 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'PSU SMART CANTEEN',
-        theme: ThemeData(),
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(
+              iconTheme: IconThemeData(
+            color: Colors.black,
+          )),
+        ),
         home: const RegisterPage(),
       ),
     );

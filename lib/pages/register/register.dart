@@ -30,7 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Text(
-                "Register",
+                "Signup",
                 style: TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               password: password,
                             );
                           },
-                          text: "Register")
+                          text: "Signup")
                       : const Center(
                           child: CircularProgressIndicator(),
                         ),
