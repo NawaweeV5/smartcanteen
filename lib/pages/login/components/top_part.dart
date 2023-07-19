@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartcanteen/appColors/app_colors.dart';
 
 class TopPartLogin extends StatelessWidget {
   const TopPartLogin({super.key});
@@ -16,7 +17,7 @@ class TopPartLogin extends StatelessWidget {
                 const Text(
                   "Login",
                   style: TextStyle(
-                      color: Colors.black,
+                      color: AppColors.kblackColor,
                       fontSize: 36,
                       fontWeight: FontWeight.bold),
                 )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartcanteen/appColors/app_colors.dart';
 
 class MyButton extends StatefulWidget {
   final void Function()? onPressed;
@@ -22,7 +23,7 @@ class _MyButtonState extends State<MyButton> {
       child: Ink(
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            colors: [Color(0xff027f47), Color(0xff01a95c)],
+            colors: [AppColors.Kgradient1, AppColors.Kgradient2],
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ),
@@ -34,7 +35,7 @@ class _MyButtonState extends State<MyButton> {
           child: Text(
             widget.text,
             style: const TextStyle(
-              color: Colors.white,
+              color: AppColors.Kwhite,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
