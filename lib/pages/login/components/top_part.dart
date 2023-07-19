@@ -5,28 +5,26 @@ class TopPartLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Column(
-          children: [
-            ClipRRect(
-              //borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                "images/logosmartcanteen.png",
-                scale: 2,
-              ),
+    return SingleChildScrollView(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                const Text(
+                  "Login",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
             ),
-            Text(
-              "Login",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold),
-            )
-          ],
-        ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }

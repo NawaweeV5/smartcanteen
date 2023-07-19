@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smartcanteen/pages/login/login_page.dart';
 import 'package:smartcanteen/pages/register/components/register_auth_provider.dart';
 
 import '../../widgets/my_button.dart';
@@ -88,11 +89,20 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Already have an account?\t\t"),
-                      Text("Login")
+                      const Text("Already have an account?\t\t"),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const LoginPage(),
+                            ),
+                          );
+                        },
+                        child: const Text("Login"),
+                      )
                     ],
                   )
                 ],

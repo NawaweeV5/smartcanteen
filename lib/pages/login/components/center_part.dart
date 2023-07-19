@@ -1,48 +1,47 @@
 import 'package:flutter/material.dart';
 
-import '../../../widgets/my_button.dart';
-
 class CenterPartLogin extends StatelessWidget {
-  const CenterPartLogin({super.key});
+  final TextEditingController? email;
+  final bool obscureText;
+  final TextEditingController? password;
+  final Widget icon;
+  final void Function()? onPressed;
+
+  const CenterPartLogin({
+    required this.obscureText,
+    required this.icon,
+    required this.email,
+    required this.password,
+    required this.onPressed,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         TextFormField(
+          controller: email,
           decoration: const InputDecoration(
             hintText: "Email",
           ),
         ),
         TextFormField(
+          obscureText: obscureText,
+          controller: password,
           decoration: InputDecoration(
             hintText: "Password",
             suffixIcon: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.visibility),
+              onPressed: onPressed,
+              icon: icon,
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
-        ),
-        Column(
-          children: [
-            MyButton(
-              onPressed: () {},
-              text: "Login",
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text("Don't have an account?\t\t"), Text("Signup")],
-            )
-          ],
         ),
       ],
     );

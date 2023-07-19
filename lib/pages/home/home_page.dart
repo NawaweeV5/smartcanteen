@@ -16,16 +16,16 @@ class HomePage extends StatelessWidget {
               FirebaseAuth.instance.signOut().then(
                     (value) => Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => LoginPage(),
+                        builder: (context) => const LoginPage(),
                       ),
                     ),
                   );
             },
-            icon: Icon(Icons.exit_to_app),
+            icon: const Icon(Icons.exit_to_app),
           ),
         ],
       ),
-      body: Center(
+      body: const Center(
         child: Text("HomePage"),
       ),
     );

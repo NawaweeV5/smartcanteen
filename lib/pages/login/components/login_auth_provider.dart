@@ -1,30 +1,22 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smartcanteen/pages/home/home_page.dart';
 
-import '../../home/home_page.dart';
-
-class RegisterAuthProvider with ChangeNotifier {
+class LoginAuthProvider with ChangeNotifier {
   static Pattern pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
-  RegExp regExp = RegExp(RegisterAuthProvider.pattern.toString());
-  UserCredential? userCredential;
+  RegExp regExp = RegExp(LoginAuthProvider.pattern.toString());
 
   bool loading = false;
-  void registerValidation(
-      {required TextEditingController? username,
-      required TextEditingController? email,
+
+  UserCredential? userCredential;
+
+  void LoginValidation(
+      {required TextEditingController? email,
       required TextEditingController? password,
       required BuildContext context}) async {
-    if (username!.text.trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Username is empty!"),
-        ),
-      );
-      return;
-    } else if (email!.text.trim().isEmpty) {
+    if (email!.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text("Email is empty!"),
@@ -57,42 +49,35 @@ class RegisterAuthProvider with ChangeNotifier {
         loading = true;
         notifyListeners();
         userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(
-                email: email.text, password: password.text);
-        loading = true;
-        notifyListeners();
-        FirebaseFirestore.instance
-            .collection("users")
-            .doc(userCredential!.user!.uid)
-            .set(
-          {
-            "Username": username.text,
-            "Email": email.text,
-            "Password": password.text,
-            "userUID": userCredential!.user!.uid,
+            .signInWithEmailAndPassword(
+          email: email.text,
+          password: password.text,
+        )
+            .then(
+          (value) async {
+            loading = false;
+            notifyListeners();
+            await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            );
           },
-        ).then((value) {
-          loading = true;
-          notifyListeners();
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const HomePage(),
-            ),
-          );
-        });
-      } on FirebaseAuthException catch (e) {
-        loading = true;
+        );
         notifyListeners();
-        if (e.code == "Weak-password") {
+      } on FirebaseAuthException catch (e) {
+        loading = false;
+        notifyListeners();
+        if (e.code == "user-not-found") {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text("Weak-password"),
+              content: Text("User not found"),
             ),
           );
-        } else if (e.code == 'email-already-in-use') {
+        } else if (e.code == "wrong-password") {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text("email-already-in-use"),
+              content: Text("Wrong password!"),
             ),
           );
         }
