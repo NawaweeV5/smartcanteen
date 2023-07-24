@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class MyBottomNavBar extends StatelessWidget {
+class AdminBottomNavBar extends StatelessWidget {
   void Function(int)? onTabChange;
-  MyBottomNavBar({super.key, required this.onTabChange});
+  AdminBottomNavBar({super.key, required this.onTabChange});
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +20,17 @@ class MyBottomNavBar extends StatelessWidget {
             // home tap
             GButton(
               icon: Icons.home,
-              text: 'Home',
+              text: 'Home Admin',
             ),
             // shop tap
             GButton(
               icon: Icons.fastfood,
-              text: 'Shop',
-            ),
-            // cart tap
-            GButton(
-              icon: Icons.shopping_bag,
-              text: 'Cart',
+              text: 'Shop Admin',
             ),
             // account tap
             GButton(
               icon: Icons.account_circle,
-              text: 'Account',
+              text: 'Account Users',
             ),
           ]),
     );

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:smartcanteen/pages/admin_home/admin_home_page.dart';
 import 'package:smartcanteen/pages/home/home_page.dart';
 import 'package:smartcanteen/pages/login/components/login_auth_provider.dart';
 import 'package:smartcanteen/pages/welcome/welcome_page.dart';
@@ -34,9 +35,10 @@ class MainApp extends StatelessWidget {
         title: 'PSU SMART CANTEEN',
         theme: ThemeData(
           appBarTheme: const AppBarTheme(
-              iconTheme: IconThemeData(
-            color: Colors.black,
-          )),
+            iconTheme: IconThemeData(
+              color: Colors.black,
+            ),
+          ),
         ),
         /*home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
@@ -47,7 +49,7 @@ class MainApp extends StatelessWidget {
             return WelcomePage();
           },
         ),*/
-        home: const HomePage(),
+        home: const AdminHomePage(),
       ),
     );
   }
