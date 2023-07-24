@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartcanteen/appColors/app_colors.dart';
 import 'package:smartcanteen/pages/login/login_page.dart';
 import 'package:smartcanteen/pages/register/register.dart';
+import 'package:smartcanteen/pages/route/routing_page.dart';
 import '../../../widgets/my_button.dart';
 
 class EndPart extends StatelessWidget {
@@ -13,10 +14,9 @@ class EndPart extends StatelessWidget {
       children: [
         MyButton(
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => LoginPage(),
-                ),
+              RoutingPage.goTonext(
+                context: context,
+                navigateTo: LoginPage(),
               );
             },
             text: "Login"),
@@ -25,10 +25,9 @@ class EndPart extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => RegisterPage(),
-              ),
+            RoutingPage.goTonext(
+              context: context,
+              navigateTo: RegisterPage(),
             );
           },
           child: Text(

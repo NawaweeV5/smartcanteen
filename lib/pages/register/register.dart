@@ -4,6 +4,7 @@ import 'package:smartcanteen/pages/login/login_page.dart';
 import 'package:smartcanteen/pages/register/components/register_auth_provider.dart';
 
 import '../../widgets/my_button.dart';
+import '../route/routing_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -95,10 +96,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       const Text("Already have an account?\t\t"),
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const LoginPage(),
-                            ),
+                          RoutingPage.goTonext(
+                            context: context,
+                            navigateTo: LoginPage(),
                           );
                         },
                         child: const Text("Login"),

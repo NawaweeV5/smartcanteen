@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartcanteen/pages/register/register.dart';
 
 import '../../../widgets/my_button.dart';
+import '../../route/routing_page.dart';
 
 class EndPartLogin extends StatelessWidget {
   final void Function()? onPressed;
@@ -31,10 +32,9 @@ class EndPartLogin extends StatelessWidget {
             Text("Don't have an account?\t\t"),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => RegisterPage(),
-                  ),
+                RoutingPage.goTonext(
+                  context: context,
+                  navigateTo: RegisterPage(),
                 );
               },
               child: Text("Signup"),

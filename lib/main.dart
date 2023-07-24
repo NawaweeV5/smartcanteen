@@ -7,7 +7,7 @@ import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smartcanteen/pages/register/components/register_auth_provider.dart';
-import 'package:smartcanteen/pages/register/register.dart';
+//import 'package:smartcanteen/pages/register/register.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +38,7 @@ class MainApp extends StatelessWidget {
             color: Colors.black,
           )),
         ),
-        home: StreamBuilder(
+        /*home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, userSnp) {
             if (userSnp.hasData) {
@@ -46,8 +46,8 @@ class MainApp extends StatelessWidget {
             }
             return WelcomePage();
           },
-        ),
-        //home: const RegisterPage(),
+        ),*/
+        home: const HomePage(),
       ),
     );
   }
