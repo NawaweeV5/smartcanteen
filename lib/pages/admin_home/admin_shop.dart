@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AdminShop extends StatefulWidget {
@@ -8,8 +9,36 @@ class AdminShop extends StatefulWidget {
 }
 
 class _AdminShopState extends State<AdminShop> {
+  final CollectionReference _shop =
+      FirebaseFirestore.instance.collection('shop');
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.blue[700],
+      body: StreamBuilder(
+        stream: _shop.snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+          if (streamSnapshot.hasData) {
+            return ListView.builder(
+              itemCount: streamSnapshot.data!.docs.length,
+              itemBuilder: (context, index) {
+                final DocumentSnapshot documentSnapshot =
+                    streamSnapshot.data!.docs[index];
+                return Card(
+                  margin: const EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(documentSnapshot['sname']),
+                    subtitle: Text(documentSnapshot['description'].toString()),
+                  ),
+                );
+              },
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
+    );
   }
 }

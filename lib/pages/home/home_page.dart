@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     // cart page
     const CartPage(),
     // account page
-    const AccountUserHomePage(),
+    UserProfilePage(),
   ];
 
   @override
