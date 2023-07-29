@@ -13,9 +13,12 @@ class _AdminHomeState extends State<AdminHome> {
   final TextEditingController _snameController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _snController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   final CollectionReference _shop =
       FirebaseFirestore.instance.collection('shop');
+
+  String searchText = '';
   // for create operation
   Future<void> _create([DocumentSnapshot? documentSnapshot]) async {
     await showModalBottomSheet(
@@ -60,7 +63,7 @@ class _AdminHomeState extends State<AdminHome> {
                   onPressed: () async {
                     final String sname = _snameController.text;
                     final String description = _descriptionController.text;
-                    final int? sn = int.tryParse(_snController.text);
+                    final String sn = _snController.text;
                     if (sn != null) {
                       await _shop.add({
                         "sname": sname,
@@ -153,24 +156,72 @@ class _AdminHomeState extends State<AdminHome> {
         });
   }
 
+  // for delete operation
+  Future<void> _delete(String ProductID) async {
+    await _shop.doc(ProductID).delete();
+
+    // for snackBar
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("Delete shop success")));
+  }
+
+  void _onSearchChanged(String value) {
+    setState(() {
+      searchText = value;
+    });
+  }
+
+  bool isSearchClicked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[700],
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.blue[700],
         shadowColor: Colors.transparent,
-        title: Text("Insert Shop"),
+        title: isSearchClicked
+            ? Container(
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)),
+                child: TextField(
+                  controller: _searchController,
+                  onChanged: _onSearchChanged,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.fromLTRB(16, 20, 16, 12),
+                    hintStyle: TextStyle(color: Colors.black),
+                    border: InputBorder.none,
+                    hintText: 'Search...',
+                  ),
+                ),
+              )
+            : const Text("Insert Shop"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  isSearchClicked = !isSearchClicked;
+                });
+              },
+              icon: Icon(isSearchClicked ? Icons.close : Icons.search))
+        ],
       ),
       body: StreamBuilder(
         stream: _shop.snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapShot) {
           if (streamSnapShot.hasData) {
+            final List<DocumentSnapshot> shop = streamSnapShot.data!.docs
+                .where((doc) => doc['sname'].toLowerCase().contains(
+                      searchText.toLowerCase(),
+                    ))
+                .toList();
             return ListView.builder(
-              itemCount: streamSnapShot.data!.docs.length,
+              itemCount: shop.length,
               itemBuilder: (context, index) {
-                final DocumentSnapshot documentSnapshot =
-                    streamSnapShot.data!.docs[index];
+                final DocumentSnapshot documentSnapshot = shop[index];
                 return Card(
                   color: Colors.white,
                   margin: EdgeInsets.all(10),
@@ -209,7 +260,7 @@ class _AdminHomeState extends State<AdminHome> {
                             icon: Icon(Icons.edit),
                           ),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () => _delete(documentSnapshot.id),
                             color: Colors.black,
                             icon: Icon(Icons.delete),
                           ),
