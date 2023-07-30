@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smartcanteen/widgets/categorieswidget.dart';
+import 'package:smartcanteen/widgets/popular_widget.dart';
+import 'package:smartcanteen/widgets/shop_widget.dart';
 
 class UserHomePage extends StatefulWidget {
   const UserHomePage({super.key});
@@ -37,7 +39,6 @@ class _UserHomePageState extends State<UserHomePage> {
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.search),
                     Container(
                       height: 50,
                       width: 300,
@@ -51,7 +52,7 @@ class _UserHomePageState extends State<UserHomePage> {
                         ),
                       ),
                     ),
-                    Icon(Icons.filter_list),
+                    Icon(Icons.search),
                   ],
                 ),
               ),
@@ -73,8 +74,45 @@ class _UserHomePageState extends State<UserHomePage> {
               ),
             ),
           ),
-
+          // categories widget
           CategoriesWidget(),
+
+          // popular menu
+          Padding(
+            padding: EdgeInsets.only(
+              top: 20,
+              left: 20,
+            ),
+            child: Text(
+              "Popular",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          // popular widget
+          PopularWidget(),
+
+          // shop
+          Padding(
+            padding: EdgeInsets.only(
+              top: 20,
+              left: 20,
+            ),
+            child: Text(
+              "Shop",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.white,
+              ),
+            ),
+          ),
+
+          // shop widget
+          ShopWidget(),
         ],
       ),
     );
