@@ -49,7 +49,7 @@ class MainApp extends StatelessWidget {
             return WelcomePage();
           },
         ),*/
-        home: const HomePage(),
+        home: const AdminHomePage(),
       ),
     );
   }

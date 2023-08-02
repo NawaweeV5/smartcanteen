@@ -24,13 +24,33 @@ class _AdminShopState extends State<AdminShop> {
               itemBuilder: (context, index) {
                 final DocumentSnapshot documentSnapshot =
                     streamSnapshot.data!.docs[index];
-                return Card(
-                  margin: const EdgeInsets.all(10),
-                  child: ListTile(
-                    title: Text(documentSnapshot['sname']),
-                    subtitle: Text(documentSnapshot['description'].toString()),
+
+                return GestureDetector(
+                  child: Container(
+                    margin: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: ListTile(
+                      title: Text(
+                        documentSnapshot['sname'],
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      subtitle:
+                          Text(documentSnapshot['description'].toString()),
+                      leading: Image.asset("images/bobatea.png"),
+                    ),
                   ),
                 );
+                // return Card(
+                //   margin: const EdgeInsets.all(10),
+                //   child: ListTile(
+                //     title: Text(documentSnapshot['sname']),
+                //     subtitle: Text(documentSnapshot['description'].toString()),
+                //   ),
+                // );
               },
             );
           }
