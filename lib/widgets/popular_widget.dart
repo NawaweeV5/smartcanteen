@@ -13,79 +13,77 @@ class PopularWidget extends StatelessWidget {
           children: [
             // single items
             for (int i = 0; i < 10; i++)
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 7),
-              child: Container(
-                width: 170,
-                height: 225,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  // boxShadow: [
-                  //   BoxShadow(
-                  //     color: Colors.black,
-                  //     spreadRadius: 1,
-                  //     blurRadius: 3,
-                  //     offset: Offset(0, 3),
-                  //   ),
-                  // ],
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        child: Image.asset(
-                          "images/slideimage2.png",
-                          height: 130,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 7),
+                child: Container(
+                  width: 170,
+                  height: 225,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.black,
+                    //     spreadRadius: 1,
+                    //     blurRadius: 3,
+                    //     offset: Offset(0, 3),
+                    //   ),
+                    // ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            "images/burger.jpg",
+                            height: 130,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Ameen & V5",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                        Text(
+                          "Burger",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        "2 lnwza ICT",
-                        style: TextStyle(
-                          fontSize: 14,
-                          //fontWeight: FontWeight.bold,
+                        SizedBox(
+                          height: 5,
                         ),
-                      ),
-                      SizedBox(
-                        height: 12,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "999 Baht",
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 18,
+                        Text(
+                          "So big big burger",
+                          style: TextStyle(
+                            fontSize: 14,
+                            //fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "999 Baht",
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontSize: 18,
+                              ),
                             ),
-                          ),
-                          Icon(
-                            Icons.favorite_border,
-                            color: Colors.red,
-                            size: 26,
-                          ),
-                        ],
-                      ),
-                    ],
+                            Icon(
+                              Icons.favorite_border,
+                              color: Colors.red,
+                              size: 26,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-
-
           ],
         ),
       ),

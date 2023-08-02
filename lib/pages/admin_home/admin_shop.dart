@@ -40,7 +40,7 @@ class _AdminShopState extends State<AdminShop> {
                       ),
                       subtitle:
                           Text(documentSnapshot['description'].toString()),
-                      leading: Image.asset("images/bobatea.png"),
+                      leading: Image.asset("images/food.jpg"),
                     ),
                   ),
                 );
